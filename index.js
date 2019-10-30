@@ -13,18 +13,18 @@ var userInput = process.argv.slice(3).join(" ");
 
 
 
-function searchMe(request, userInput){
+function searchMe(request, songTitle){
   switch (request){
     case "spotifyThis":
-    spotifyThis(userInput);
+    spotifyThis(songTitle);
     break;
 
     case "omdbThis":
-    ombdThis(userInput);
+    ombdThis(songTitle);
     break;
 
     case "bandsThis":
-    bandsThis(userInput);
+    bandsThis(songTitle);
     break;
 
     case "do-what-it-says":
@@ -35,10 +35,10 @@ function searchMe(request, userInput){
 }
 
 
-function spotifyThis(songName){ //why did i need to put parameter to get my randomfunctiont to run
+function spotifyThis(){ //why did i need to put parameter to get my randomfunction to run
     if (userInput === "") {
     }
-    spotify.search({ type: 'track', query: songName }, function (error, data) {
+    spotify.search({ type: 'track', query: userInput }, function (error, data) {
         if (error) {
             console.log(error)
         }
@@ -103,6 +103,7 @@ function getRandom(){
     }else{
       console.log(data);
       var txtData = data.split(",");
+      userInput = txtData[1];
       searchMe(txtData[0], txtData[1]);
       console.log(txtData);
 
