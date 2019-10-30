@@ -11,11 +11,10 @@ var inquirer = require("inquirer");
 var request = process.argv[2];
 var userInput = process.argv.slice(3).join(" ");
 
-var omdbKey = "trilogy";
-var omdbUrl = `http://www.omdbapi.com/?apikey=${omdbKey}&t=${userInput}`;
 
 
-switch (request){
+function searchMe(request, userInput){
+  switch (request){
     case "spotifyThis":
     spotifyThis(userInput);
     break;
@@ -27,25 +26,37 @@ switch (request){
     case "bandsThis":
     bandsThis(userInput);
     break;
+
+    case "do-what-it-says":
+      getRandom();
+      break;
+  }
+
 }
 
-function spotifyThis(){ 
+
+function spotifyThis(songName){ //why did i need to put parameter to get my randomfunctiont to run
     if (userInput === "") {
     }
-    spotify.search({ type: 'track', query: userInput }, function (error, data) {
+    spotify.search({ type: 'track', query: songName }, function (error, data) {
         if (error) {
             console.log(error)
         }
         else{
+            console.log("=================");
             console.log(data.tracks.items[0].artists[0].name);
             console.log(data.tracks.items[0].name);
             console.log(data.tracks.items[0].album.name);
             console.log(data.tracks.items[0].href);
+            console.log("=================");
+                      
         };
     });
 };
 
 function ombdThis(){
+   var omdbKey = "trilogy";
+   var omdbUrl = `http://www.omdbapi.com/?apikey=${omdbKey}&t=${userInput}`;
     axios.get(omdbUrl)
   .then(function (response) {
     // handle success
@@ -70,3 +81,34 @@ function ombdThis(){
     // always executed
   });
 }
+
+function bandsThis(){
+  var artist = userInput;
+  var bandsUrl = `https://rest.bandsintown.com/artists/${artist}/events?app_id=codingbootcamp`;
+
+  axios.get(bandsUrl)
+  .then(function (response){
+    console.log("=================");
+    console.log(response.data[0].venue.name);
+    console.log(response.data[0].venue.city);
+    console.log(moment(response.data[0].datetime).format("MM/DD/YYYY"));
+    console.log("=================");
+  })
+}
+
+function getRandom(){
+  fs.readFile('random.txt', "utf8",  function(err, data) {
+    if (err){
+      return console.log(err);
+    }else{
+      console.log(data);
+      var txtData = data.split(",");
+      searchMe(txtData[0], txtData[1]);
+      console.log(txtData);
+
+    }
+    
+  });
+}
+
+searchMe(request, userInput);
