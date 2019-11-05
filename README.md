@@ -55,7 +55,8 @@ EXAMPLE:
    *If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'*
 
 EXAMPLE:
-![Movie-Example](/images/movie-this-screenshot.png)
+![omdb](https://user-images.githubusercontent.com/53619333/68173754-f46d2580-ff49-11e9-97f6-6712c67833c3.png)
+
 
 4. `node liri.js do-what-it-says`
 
