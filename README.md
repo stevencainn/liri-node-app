@@ -63,6 +63,7 @@ EXAMPLE:
 
    * Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
 
+![do what it says](https://user-images.githubusercontent.com/53619333/68174004-9987fe00-ff4a-11e9-87ac-4630accca21b.png)
 
 ### Technologies Used
 
