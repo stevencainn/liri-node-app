@@ -39,7 +39,6 @@ EXAMPLE:
 ![liri-screen](https://user-images.githubusercontent.com/53619333/68173501-321d7e80-ff49-11e9-8c10-52ea3a0d5e8e.png)
 ![liri-screen1](https://user-images.githubusercontent.com/53619333/68173502-321d7e80-ff49-11e9-839f-e0cb780bb80b.png)
 ![liri-screen2](https://user-images.githubusercontent.com/53619333/68173503-321d7e80-ff49-11e9-8d72-28cd6356f181.png)
-![sql screen shot](https://user-images.githubusercontent.com/53619333/68173504-321d7e80-ff49-11e9-9771-547965be76c9.png)
 
 
 3. `node liri.js movie-this '<movie name here>'`
